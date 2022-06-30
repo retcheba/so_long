@@ -1,26 +1,26 @@
 SRCS	= main.c
 OBJS	= $(SRCS:.c=.o)
 CC		= gcc
-FLAGS 	= -Wall -Wextra
+FLAGS 	= -Wall -Wextra -Werror
 NAME	= so_long
 RM		= rm -f
-MLX		= mlx_linux/libmlx_Linux.a
+MLX		= mlx/libmlx.a
 
 all:		$(NAME)
 
 %.o: 		%.c
-			$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+			$(CC) $(FLAGS) -Imlx -c $< -o $@
 
 $(MLX):	
-			make -C mlx_linux
+			make -C mlx
 
 $(NAME): 	$(OBJS) $(MLX)
-			$(CC) $(FLAGS) $(OBJS) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 
 clean:
 			$(RM) $(OBJS)
-			make clean -C mlx_linux
+			make clean -C mlx
 
 fclean:		clean
 			$(RM) $(NAME)
