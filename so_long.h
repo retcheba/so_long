@@ -26,8 +26,7 @@ typedef struct s_game
 	int		img_height;
 }	t_game;
 
-void	put_image(t_game *game);
-int	close(t_game *game);
+int	ft_close(t_game *game);
 int	keypress(int keycode, t_game *game);
 
 #endif
