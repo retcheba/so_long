@@ -1,7 +1,7 @@
 SRCS	= main.c
 OBJS	= $(SRCS:.c=.o)
 CC		= gcc
-FLAGS 	= -Wall -Wextra -Werror
+FLAGS 	= 
 NAME	= so_long
 RM		= rm -f
 MLX		= mlx/libmlx.a
