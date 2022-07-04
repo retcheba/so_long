@@ -25,13 +25,7 @@ int	ft_close(t_game *game)
 int	keypress(int keycode, t_game *game)
 {
 	if (keycode == 65307)
-	{
-		mlx_destroy_image(game->mlx, game->img);
-		mlx_destroy_window(game->mlx, game->win);
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-		exit(0);
-	}
+		ft_close(game);
 	return (0);
 }
 
