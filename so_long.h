@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/05 17:44:39 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/08 18:25:20 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,16 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
-	void	*player;
+	void	*link;
+	void	*link_back;
+	void	*link_left;
+	void	*link_right;
 	void	*grass;
+	void	*tree;
+	void	*heart;
+	void	*chest;
+	void	*chest_open;
+	void	*chest_or;
 	int		img_width;
 	int		img_height;
 	int		x;
