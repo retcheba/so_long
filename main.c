@@ -6,53 +6,54 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:53:44 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/14 22:14:34 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/14 22:57:03 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	mapping(t_game *game)
+void	ft_put_image(t_game *game)
 {
-	int		fd;
-	char	*tmp;
-	int		line;
-
-	game->map = NULL;
-	line = 0;
-	fd = open("map", O_RDONLY);
-	tmp = get_next_line(fd);
-	if (tmp)
-		line++;
-	while (tmp)
+	int	x;
+	int	y;
+	int	x_link;
+	int	y_link;
+	
+	y_link = 0;
+	x_link = 0;
+	game->y = 0;
+	game->x = 0;
+	y = 0;
+	x = 0;
+	while (game->map[y])
 	{
-		if (tmp)
-			free(tmp);
-		tmp = get_next_line(fd);
-		if (tmp)
-			line++;
+		
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] == '0')
+				mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
+			if (game->map[y][x] == '1')
+				mlx_put_image_to_window(game->mlx, game->win, game->tree, game->x, game->y);
+			if (game->map[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->win, game->heart, game->x, game->y);
+			if (game->map[y][x] == 'E')
+				mlx_put_image_to_window(game->mlx, game->win, game->chest, game->x, game->y);
+			if (game->map[y][x] == 'P')
+			{
+				mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
+				x_link = game->x;
+				y_link = game->y;
+			}
+			game->x += 48;
+			x++;
+		}
+		game->x = 0;
+		game->y += 48;
+		x = 0;
+		y++;
 	}
-	if (tmp)
-		free(tmp);
-	close(fd);
-	game->map = malloc((line + 1) * sizeof(char *));
-	line = 0;
-	fd = open("map", O_RDONLY);
-	tmp = get_next_line(fd);
-	while (tmp)
-	{
-		game->map[line] = tmp;
-		tmp = get_next_line(fd);
-		line++;
-	}
-	game->map[line] = NULL;
-	if (tmp)
-		free(tmp);
-	close(fd);
-	game->win_height = line * 48;
-	game->win_width = (ft_strln(game->map[0]) - 1) * 48;
-	printf("win_width = %d\n", game->win_width);
-	printf("win_height = %d\n", game->win_height);
+	game->x = x_link;
+	game->y = y_link;
 }
 
 int	ft_close(t_game *game)
@@ -116,15 +117,8 @@ int	keypress(int keycode, t_game *game)
 int	main(void)
 {
 	t_game	game;
-	int		l;
 
 	mapping(&game);
-	l = 0;
-	while (game.map[l])
-	{
-		printf("%s", game.map[l]);
-		l++;
-	}
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, "so_long");
 	game.chest = mlx_xpm_file_to_image(game.mlx, "sprites/chest.xpm", &game.img_width, &game.img_height);
@@ -138,57 +132,6 @@ int	main(void)
 	game.link_right = mlx_xpm_file_to_image(game.mlx, "sprites/link_right.xpm", &game.img_width, &game.img_height);
 	mlx_key_hook(game.win, keypress, &game);
 	mlx_hook(game.win, 17, 1, ft_close, &game);
-	game.y = 0;
-	game.x = 0;
-	while (game.x < 1152)
-	{
-		while (game.y < 720)
-		{
-			mlx_put_image_to_window(game.mlx, game.win, game.grass, game.x, game.y);
-			game.y += 48;
-		}
-		game.y = 0;
-		game.x += 48;
-	}
-	game.y = 0;
-	game.x = 0;
-	while (game.x < 1152)
-	{
-		mlx_put_image_to_window(game.mlx, game.win, game.tree, game.x, game.y);
-		game.x += 48;
-	}
-	game.y = 0;
-	game.x = 0;
-	while (game.y < 720)
-	{
-		mlx_put_image_to_window(game.mlx, game.win, game.tree, game.x, game.y);
-		game.y += 48;
-	}
-	game.y = 720 - 48;
-	game.x = 0;
-	while (game.x < 1152)
-	{
-		mlx_put_image_to_window(game.mlx, game.win, game.tree, game.x, game.y);
-		game.x += 48;
-	}
-	game.y = 0;
-	game.x = 1152 - 48;
-	while (game.y < 720)
-	{
-		mlx_put_image_to_window(game.mlx, game.win, game.tree, game.x, game.y);
-		game.y += 48;
-	}
-	game.x = 48 * 11;
-	game.y = 48 * 7;
-	mlx_put_image_to_window(game.mlx, game.win, game.chest, game.x, game.y);
-	game.x = 48 * 12;
-	game.y = 48 * 7;
-	mlx_put_image_to_window(game.mlx, game.win, game.chest_or, game.x, game.y);
-	game.x = 48 * 2;
-	game.y = 48;
-	mlx_put_image_to_window(game.mlx, game.win, game.heart, game.x, game.y);
-	game.x = 48;
-	game.y = 48;
-	mlx_put_image_to_window(game.mlx, game.win, game.link, game.x, game.y);
+	ft_put_image(&game);
 	mlx_loop(game.mlx);
 }

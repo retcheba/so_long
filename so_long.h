@@ -42,6 +42,7 @@ typedef struct s_game
 }	t_game;
 
 void	mapping(t_game *game);
+void	ft_put_image(t_game *game);
 int	ft_close(t_game *game);
 int	keypress(int keycode, t_game *game);
 int	ft_strln(char *s);
