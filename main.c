@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:53:44 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/15 00:07:37 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/15 00:39:13 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,10 @@ int	keypress(int keycode, t_game *game)
 		ft_close(game);
 	if (keycode == RIGHT || keycode == D)
 	{
-		if (game->map[(game->y) / 48][(game->x + 48) / 48] == '0' || game->map[(game->y) / 48][(game->x + 48) / 48] == 'C'
-				|| game->map[(game->y) / 48][(game->x + 48) / 48] == 'P')
+		if (game->map[game->y / 48][(game->x + 48) / 48] == '0'
+				|| game->map[game->y / 48][(game->x + 48) / 48] == 'C'
+				|| game->map[game->y / 48][(game->x + 48) / 48] == 'P'
+				|| (game->map[game->y / 48][(game->x + 48) / 48] == 'E' && game->cmpt_heart == 0))
 		{
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->x += 48;
@@ -106,8 +108,14 @@ int	keypress(int keycode, t_game *game)
 			if (game->map[game->y / 48][game->x / 48] == 'C')
 			{
 				game->cmpt_heart--;
+				game->map[game->y / 48][game->x / 48] = '0';
 				if (game->cmpt_heart == 0)
 					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
+			if (game->map[game->y / 48][game->x / 48] == 'E' && game->cmpt_heart == 0)
+			{
+				printf("You win !\n");
+				ft_close(game);
 			}
 		}
 		else
@@ -115,8 +123,10 @@ int	keypress(int keycode, t_game *game)
 	}
 	if (keycode == LEFT || keycode == Q)
 	{
-		if (game->map[(game->y) / 48][(game->x - 48) / 48] == '0' || game->map[(game->y) / 48][(game->x - 48) / 48] == 'C'
-				|| game->map[(game->y) / 48][(game->x - 48) / 48] == 'P')
+		if (game->map[(game->y) / 48][(game->x - 48) / 48] == '0'
+				|| game->map[game->y / 48][(game->x - 48) / 48] == 'C'
+				|| game->map[game->y / 48][(game->x - 48) / 48] == 'P'
+				|| (game->map[game->y / 48][(game->x - 48) / 48] == 'E' && game->cmpt_heart == 0))
 		{
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->x -= 48;
@@ -124,8 +134,14 @@ int	keypress(int keycode, t_game *game)
 			if (game->map[game->y / 48][game->x / 48] == 'C')
 			{
 				game->cmpt_heart--;
+				game->map[game->y / 48][game->x / 48] = '0';
 				if (game->cmpt_heart == 0)
 					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
+			if (game->map[game->y / 48][game->x / 48] == 'E' && game->cmpt_heart == 0)
+			{
+				printf("You win !\n");
+				ft_close(game);
 			}
 		}
 		else
@@ -133,8 +149,10 @@ int	keypress(int keycode, t_game *game)
 	}
 	if (keycode == TOP || keycode == Z)
 	{
-		if (game->map[(game->y - 48) / 48][game->x / 48] == '0' || game->map[(game->y - 48) / 48][game->x / 48] == 'C'
-				|| game->map[(game->y - 48) / 48][game->x / 48] == 'P')
+		if (game->map[(game->y - 48) / 48][game->x / 48] == '0'
+				|| game->map[(game->y - 48) / 48][game->x / 48] == 'C'
+				|| game->map[(game->y - 48) / 48][game->x / 48] == 'P'
+				|| (game->map[(game->y - 48) / 48][game->x / 48] == 'E' && game->cmpt_heart == 0))
 		{
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->y -= 48;
@@ -142,8 +160,14 @@ int	keypress(int keycode, t_game *game)
 			if (game->map[game->y / 48][game->x / 48] == 'C')
 			{
 				game->cmpt_heart--;
+				game->map[game->y / 48][game->x / 48] = '0';
 				if (game->cmpt_heart == 0)
 					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
+			if (game->map[game->y / 48][game->x / 48] == 'E' && game->cmpt_heart == 0)
+			{
+				printf("You win !\n");
+				ft_close(game);
 			}
 		}
 		else
@@ -151,8 +175,10 @@ int	keypress(int keycode, t_game *game)
 	}
 	if (keycode == BOTTOM || keycode == S)
 	{
-		if (game->map[(game->y + 48) / 48][game->x / 48] == '0' || game->map[(game->y + 48) / 48][game->x / 48] == 'C'
-				|| game->map[(game->y + 48) / 48][game->x / 48] == 'P')
+		if (game->map[(game->y + 48) / 48][game->x / 48] == '0'
+				|| game->map[(game->y + 48) / 48][game->x / 48] == 'C'
+				|| game->map[(game->y + 48) / 48][game->x / 48] == 'P'
+				|| (game->map[(game->y + 48) / 48][game->x / 48] == 'E' && game->cmpt_heart == 0))
 		{
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->y += 48;
@@ -160,8 +186,14 @@ int	keypress(int keycode, t_game *game)
 			if (game->map[game->y / 48][game->x / 48] == 'C')
 			{
 				game->cmpt_heart--;
+				game->map[game->y / 48][game->x / 48] = '0';
 				if (game->cmpt_heart == 0)
 					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
+			if (game->map[game->y / 48][game->x / 48] == 'E' && game->cmpt_heart == 0)
+			{
+				printf("You win !\n");
+				ft_close(game);
 			}
 		}
 		else
