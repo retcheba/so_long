@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/14 19:36:03 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/14 23:15:18 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <stdlib.h>
 #include <fcntl.h>
 # include <stdio.h>
+# define Z 122
+# define S 115
+# define Q 113
+# define D 100
+# define TOP 65362
+# define BOTTOM 65364
+# define LEFT 65361
+# define RIGHT 65363
 
 typedef struct s_game
 {
@@ -39,6 +47,7 @@ typedef struct s_game
 	int		img_height;
 	int		x;
 	int		y;
+	int		cmpt_heart;
 }	t_game;
 
 void	mapping(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:53:44 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/14 22:57:03 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/14 23:47:38 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_put_image(t_game *game)
 	game->x = 0;
 	y = 0;
 	x = 0;
+	game->cmpt_heart = 0;
 	while (game->map[y])
 	{
 		
@@ -35,7 +36,10 @@ void	ft_put_image(t_game *game)
 			if (game->map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, game->tree, game->x, game->y);
 			if (game->map[y][x] == 'C')
+			{
 				mlx_put_image_to_window(game->mlx, game->win, game->heart, game->x, game->y);
+				game->cmpt_heart++;;
+			}
 			if (game->map[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->win, game->chest, game->x, game->y);
 			if (game->map[y][x] == 'P')
@@ -87,29 +91,53 @@ int	keypress(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 		ft_close(game);
-	if (keycode == 100 || keycode == 65363)
+	if (keycode == RIGHT || keycode == D)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
-		game->x += 48;
-		mlx_put_image_to_window(game->mlx, game->win, game->link_right, game->x, game->y);
+		if (game->map[(game->y) / 48][(game->x + 48) / 48] == '0' || game->map[(game->y) / 48][(game->x + 48) / 48] == 'C'
+				|| game->map[(game->y) / 48][(game->x + 48) / 48] == 'P')
+		{
+			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
+			game->x += 48;
+			mlx_put_image_to_window(game->mlx, game->win, game->link_right, game->x, game->y);
+		}
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->link_right, game->x, game->y);
 	}
-	if (keycode == 113 || keycode == 65361)
+	if (keycode == LEFT || keycode == Q)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
-		game->x -= 48;
-		mlx_put_image_to_window(game->mlx, game->win, game->link_left, game->x, game->y);
+		if (game->map[(game->y) / 48][(game->x - 48) / 48] == '0' || game->map[(game->y) / 48][(game->x - 48) / 48] == 'C'
+				|| game->map[(game->y) / 48][(game->x - 48) / 48] == 'P')
+		{
+			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
+			game->x -= 48;
+			mlx_put_image_to_window(game->mlx, game->win, game->link_left, game->x, game->y);
+		}
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->link_left, game->x, game->y);
 	}
-	if (keycode == 122 || keycode == 65362)
+	if (keycode == TOP || keycode == Z)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
-		game->y -= 48;
-		mlx_put_image_to_window(game->mlx, game->win, game->link_back, game->x, game->y);
+		if (game->map[(game->y - 48) / 48][game->x / 48] == '0' || game->map[(game->y - 48) / 48][game->x / 48] == 'C'
+				|| game->map[(game->y - 48) / 48][game->x / 48] == 'P')
+		{
+			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
+			game->y -= 48;
+			mlx_put_image_to_window(game->mlx, game->win, game->link_back, game->x, game->y);
+		}
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->link_back, game->x, game->y);
 	}
-	if (keycode == 115 || keycode == 65364)
+	if (keycode == BOTTOM || keycode == S)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
-		game->y += 48;
-		mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
+		if (game->map[(game->y + 48) / 48][game->x / 48] == '0' || game->map[(game->y + 48) / 48][game->x / 48] == 'C'
+				|| game->map[(game->y + 48) / 48][game->x / 48] == 'P')
+		{
+			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
+			game->y += 48;
+			mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
+		}
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
 	}
 	return (0);
 }
