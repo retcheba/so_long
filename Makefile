@@ -1,7 +1,7 @@
-SRCS	= main.c
+SRCS	= main.c so_long_utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJS	= $(SRCS:.c=.o)
 CC		= gcc
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= -Wall -Wextra -Werror
 NAME	= so_long
 RM		= rm -f
 MLX		= mlx_linux/libmlx.a
