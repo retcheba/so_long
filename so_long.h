@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/14 23:15:18 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/15 00:06:32 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_game
 	int		img_height;
 	int		x;
 	int		y;
+	int		x_chest;
+	int		y_chest;
 	int		cmpt_heart;
 }	t_game;
 

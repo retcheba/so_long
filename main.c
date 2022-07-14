@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:53:44 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/14 23:47:38 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/15 00:07:37 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ void	ft_put_image(t_game *game)
 				game->cmpt_heart++;;
 			}
 			if (game->map[y][x] == 'E')
+			{
 				mlx_put_image_to_window(game->mlx, game->win, game->chest, game->x, game->y);
+				game->x_chest = game->x;
+				game->y_chest = game->y;
+			}
 			if (game->map[y][x] == 'P')
 			{
 				mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
@@ -99,6 +103,12 @@ int	keypress(int keycode, t_game *game)
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->x += 48;
 			mlx_put_image_to_window(game->mlx, game->win, game->link_right, game->x, game->y);
+			if (game->map[game->y / 48][game->x / 48] == 'C')
+			{
+				game->cmpt_heart--;
+				if (game->cmpt_heart == 0)
+					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
 		}
 		else
 			mlx_put_image_to_window(game->mlx, game->win, game->link_right, game->x, game->y);
@@ -111,6 +121,12 @@ int	keypress(int keycode, t_game *game)
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->x -= 48;
 			mlx_put_image_to_window(game->mlx, game->win, game->link_left, game->x, game->y);
+			if (game->map[game->y / 48][game->x / 48] == 'C')
+			{
+				game->cmpt_heart--;
+				if (game->cmpt_heart == 0)
+					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
 		}
 		else
 			mlx_put_image_to_window(game->mlx, game->win, game->link_left, game->x, game->y);
@@ -123,6 +139,12 @@ int	keypress(int keycode, t_game *game)
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->y -= 48;
 			mlx_put_image_to_window(game->mlx, game->win, game->link_back, game->x, game->y);
+			if (game->map[game->y / 48][game->x / 48] == 'C')
+			{
+				game->cmpt_heart--;
+				if (game->cmpt_heart == 0)
+					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
 		}
 		else
 			mlx_put_image_to_window(game->mlx, game->win, game->link_back, game->x, game->y);
@@ -135,6 +157,12 @@ int	keypress(int keycode, t_game *game)
 			mlx_put_image_to_window(game->mlx, game->win, game->grass, game->x, game->y);
 			game->y += 48;
 			mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
+			if (game->map[game->y / 48][game->x / 48] == 'C')
+			{
+				game->cmpt_heart--;
+				if (game->cmpt_heart == 0)
+					mlx_put_image_to_window(game->mlx, game->win, game->chest_or, game->x_chest, game->y_chest);
+			}
 		}
 		else
 			mlx_put_image_to_window(game->mlx, game->win, game->link, game->x, game->y);
