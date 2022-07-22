@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/15 11:18:51 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:54:35 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "../get_next_line/get_next_line.h"
-# include <stdio.h>
+# include "../ft_printf/ft_printf.h"
 # define Z 122
 # define S 115
 # define Q 113
@@ -50,12 +50,14 @@ typedef struct s_game
 	int		x_chest;
 	int		y_chest;
 	int		cmpt_heart;
+	int		cmpt_moves;
 }	t_game;
 
-void	mapping(t_game *game);
+void	ft_mapping(t_game *game);
 void	ft_put_image(t_game *game);
-int	ft_close(t_game *game);
-int	keypress(int keycode, t_game *game);
-int	ft_strln(char *s);
+void	ft_init_images(t_game *game);
+int		ft_close(t_game *game);
+int		ft_keypress(int keycode, t_game *game);
+int		ft_strln(char *s);
 
 #endif
