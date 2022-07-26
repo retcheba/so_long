@@ -1,4 +1,4 @@
-SRCS	= srcs/main.c srcs/mapping.c srcs/put_image.c srcs/keypress.c srcs/so_long_utils.c
+SRCS	= srcs/main.c srcs/mapping.c srcs/put_image.c srcs/keypress.c srcs/keypress2.c srcs/so_long_utils.c
 OBJS	= $(SRCS:.c=.o)
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
