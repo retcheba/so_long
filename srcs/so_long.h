@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 16:31:35 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:09:23 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 typedef struct s_game
 {
+	char	*map_name;
 	char	**map;
 	void	*mlx;
 	void	*win;

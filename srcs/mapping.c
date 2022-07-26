@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 22:19:59 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 16:25:02 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:10:23 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_mapping(t_game *game)
 
 	game->map = NULL;
 	line = 0;
-	fd = open("map", O_RDONLY);
+	fd = open(game->map_name, O_RDONLY);
 	tmp = get_next_line(fd);
 	if (tmp)
 		line++;
@@ -37,7 +37,7 @@ void	ft_mapping(t_game *game)
 	close(fd);
 	game->map = malloc((line + 1) * sizeof(char *));
 	line = 0;
-	fd = open("map", O_RDONLY);
+	fd = open(game->map_name, O_RDONLY);
 	tmp = get_next_line(fd);
 	while (tmp)
 	{
