@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:10:17 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/22 18:23:42 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/26 21:40:41 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*get_next_line(int fd)
 	static char		*save;
 	int				ret;
 
-	buff = malloc(sizeof(char) * 1);
+	buff = malloc(sizeof(char) * (42 + 1));
 	if ((!buff) || (fd < 0)
 		|| (read(fd, buff, 0) == -1))
 		return (free(buff), NULL);
@@ -62,7 +62,7 @@ char	*get_next_line(int fd)
 	get_next_line_2(&ret, &str_final, &save);
 	while (ret && !(is_line_break(str_final)))
 	{
-		ret = read(fd, buff, 1);
+		ret = read(fd, buff, 42);
 		buff[ret] = 0;
 		get_next_line_3(&str_final, &buff, &save);
 	}

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 18:57:01 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:47:56 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_game
 
 void	ft_init_images(t_game *game);
 void	ft_mapping(t_game *game);
+int		ft_line_map(t_game *game);
 void	ft_put_image(t_game *game);
 void	ft_what_image(t_game *game, int y, int x);
 void	ft_what_image2(t_game *game, int y, int x);

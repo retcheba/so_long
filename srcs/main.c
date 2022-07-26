@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:53:44 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 18:19:05 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/26 21:12:38 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_game	game;
 
-	if (argc != 2)
-		return (0);
+	(void)argc;
 	game.map_name = argv[1];
 	ft_mapping(&game);
 	game.mlx = mlx_init();
