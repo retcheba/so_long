@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/22 17:54:35 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:31:35 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,17 @@ typedef struct s_game
 	int		y;
 	int		x_chest;
 	int		y_chest;
+	int		x_link;
+	int		y_link;
 	int		cmpt_heart;
 	int		cmpt_moves;
 }	t_game;
 
+void	ft_init_images(t_game *game);
 void	ft_mapping(t_game *game);
 void	ft_put_image(t_game *game);
-void	ft_init_images(t_game *game);
+void	ft_what_image(t_game *game, int y, int x);
+void	ft_what_image2(t_game *game, int y, int x);
 int		ft_close(t_game *game);
 int		ft_keypress(int keycode, t_game *game);
 int		ft_strln(char *s);
