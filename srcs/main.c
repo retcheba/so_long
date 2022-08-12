@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:53:44 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 21:12:38 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:31:08 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ int	main(int argc, char *argv[])
 {
 	t_game	game;
 
-	(void)argc;
+	if (map_error(argc, argv))
+		return (1);
 	game.map_name = argv[1];
 	ft_mapping(&game);
+	if (map_error2(&game))
+		return (1);
 	game.mlx = mlx_init();
 	ft_init_images(&game);
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height,
@@ -28,6 +31,7 @@ int	main(int argc, char *argv[])
 	mlx_hook(game.win, 17, 1, ft_close, &game);
 	ft_put_image(&game);
 	mlx_loop(game.mlx);
+	return (0);
 }
 
 void	ft_init_images(t_game *game)

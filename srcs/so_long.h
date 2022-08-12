@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/08/12 16:48:11 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:07:22 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,13 @@ typedef struct s_game
 	int		x_link;
 	int		y_link;
 	int		cmpt_heart;
+	int		cmpt_exit;
+	int		cmpt_start;
 	int		cmpt_moves;
 }	t_game;
 
+int		map_error(int argc, char **argv);
+int		map_error2(t_game *game);
 void	ft_init_images(t_game *game);
 void	ft_mapping(t_game *game);
 int		ft_line_map(t_game *game);
