@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:54:38 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 19:47:56 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:48:11 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <fcntl.h>
 # include "../get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
-# define Z 122
+# define W 119
 # define S 115
-# define Q 113
+# define A 97
 # define D 100
 # define TOP 65362
 # define BOTTOM 65364

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 17:43:27 by retcheba          #+#    #+#             */
-/*   Updated: 2022/07/26 18:56:00 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:49:40 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_keypress(int keycode, t_game *game)
 		ft_close(game);
 	if (keycode == RIGHT || keycode == D)
 		ft_right(game);
-	if (keycode == LEFT || keycode == Q)
+	if (keycode == LEFT || keycode == A)
 		ft_left(game);
-	if (keycode == TOP || keycode == Z)
+	if (keycode == TOP || keycode == W)
 		ft_top(game);
 	if (keycode == BOTTOM || keycode == S)
 		ft_bottom(game);

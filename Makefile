@@ -1,7 +1,7 @@
 SRCS	= srcs/main.c srcs/mapping.c srcs/put_image.c srcs/keypress.c srcs/keypress2.c srcs/so_long_utils.c
 OBJS	= $(SRCS:.c=.o)
 CC		= gcc
-FLAGS	= -g -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 NAME	= so_long
 RM		= rm -f
 MLX		= mlx_linux/libmlx.a
