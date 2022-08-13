@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:03:21 by retcheba          #+#    #+#             */
-/*   Updated: 2022/08/12 18:49:27 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/08/13 10:39:41 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,22 @@ static int	check_ber(char **argv)
 int	map_error(int argc, char **argv)
 {
 	int	fd;
+	int	r;
 
 	if (argc != 2 || check_ber(argv))
 	{
-		ft_printf("Error: missing map name argument or wrong map name\n");
+		r = write(2, "Error\n", 6);
+		r = write(2, "missing map name argument or wrong map name\n", 44);
 		return (1);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error: missing map name argument or wrong map name\n");
+		r = write(2, "Error\n", 6);
+		r = write(2, "missing map name argument or wrong map name\n", 44);
 		return (1);
 	}
+	(void)r;
 	close(fd);
 	return (0);
 }
