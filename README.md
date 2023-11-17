@@ -27,9 +27,11 @@ les items et le décor de votre choix.
 
 ### Le sujet
 Votre projet doit respecter les règles suivantes :
-• Vous devez utiliser la MiniLibX. Soit la version disponible sur les machines de
-l’école, soit en l’installant par les sources.
-• Vous devez rendre un Makefile qui compilera vos fichiers sources. Il ne doit pas
+
+- Vous devez utiliser la MiniLibX (une bibliothèque graphique développée par 42 qui inclut des outils basiques
+permettant d’ouvrir une fenêtre, de créer des images et de gérer des événements clavier
+et souris).
+- Vous devez rendre un Makefile qui compilera vos fichiers sources. Il ne doit pas
 relink.
-• Votre programme doit prendre en paramètre un fichier de carte se terminant par
+- Votre programme doit prendre en paramètre un fichier de carte se terminant par
 l’extension .ber.
