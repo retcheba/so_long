@@ -34,6 +34,6 @@ $(PRINTF):
 			make -C ft_printf/
 
 $(NAME): 	$(OBJS) $(MLX) $(GNL) $(PRINTF)
-			$(CC) $(FLAGS) $(OBJS) $(MLX) $(GNL) $(PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) $(MLX) $(GNL) $(PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -o $(NAME)
 
 .PHONY:		all clean fclean re
