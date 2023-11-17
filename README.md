@@ -15,6 +15,11 @@ make
 ./so_long map*.ber
   ```
 
+### Commandes :
+
+- WASD ou les flèches pour se déplacer
+- ESC ou la croix pour quiter
+
 # Qu'est ce que So_long ?
 Ce projet est mon premier projet graphique !
 
